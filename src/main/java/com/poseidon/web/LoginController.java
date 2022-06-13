@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class LoginController { // 로그인 페이지 만들때 첫번째 생성 1.(컨트롤러) 2. jsp생성 3. LoginDTO 4. LoginDAO 5.LoginService 6.login.xml
+public class LoginController { 
+	// 로그인 페이지 만들때 첫번째 생성 1.(컨트롤러) 2. jsp생성 3. LoginDTO 4. LoginDAO 5.LoginService 6.login.xml 7. 서블렛 콘텍스트 들어가서 이미지 설정
+	// <session-config <session-timeout>15</session-timeout> </session-config> 로그인 시간 15분 지나면 자동 로그아웃 
 
 	@Autowired
 	private LoginService loginService;

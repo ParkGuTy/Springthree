@@ -10,9 +10,21 @@ public class BoardService {
 	@Autowired
 	private BoardDAO boardDAO;
 
-	public List<BoardDTO> boardList() {
-		return boardDAO.boardList();
+	public List<BoardDTO> boardList(PageDTO page) {
+		return boardDAO.boardList(page);
 		
+	}
+
+	public BoardDTO detail(int b_no) {
+		return boardDAO.detail(b_no);
+	}
+
+	public int write(BoardDTO write) {
+		return boardDAO.write(write);
+	}
+
+	public int totalCount() {
+		return boardDAO.totalCount();
 	}
 	
 }

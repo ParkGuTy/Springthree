@@ -1,47 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
 <link href="./css/menu.css" rel="stylesheet">
+<style type="text/css">
+table {
+	width: 100%;
+	height: 500px;
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+tr :hover {
+	min-height: 50px;
+}
+td {
+	border-bottom: 1px solid white;
+}
+div{
+	text-align: center;
+}
+</style>
+<script type="text/javascript">
+	function linkPage(pageNo){
+		location.href = "./board?pageNo="+pageNo;
+	}	
+</script>
 </head>
 <body>
-	<h1>게시판</h1>
-	<div id="container">
 		<div id="menubar">
-			<h1>로고</h1>
-			<br> <br>
 			<c:import url="menu.jsp"/>
 			</div>
+			<div id="main">
 		
-	<table>
+	<table calss="table">
+	<thead>
 		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>날짜</th>
-			<th>쓴사람</th>
-			<th>조회수</th>
-			<th>좋아요</th>
+			<th scope="col">번호</th>
+			<th scope="col">제목</th>
+			<th scope="col">날짜</th>
+			<th scope="col">쓴사람</th>
+			<th scope="col">조회수</th>
 		</tr>
+		</thead>
 		<c:forEach items="${boardList}" var="b">
-		<tr>
-			<th>${b.b_no }</th>
-			<th>${b.b_title }</th>
-			<th>${b.b_date }</th>
-			<th>${m_name }</th>
-			<th>${b.b_count }</th>
-			<th>${b.b_like }</th>
+		<tr onclick="location.href='./detail?b_no=${b.b_no}'">
+			<th id="r1">${b.b_no }</th>
+			<th id="r3">${b.b_title }</th>
+			<th id="r2">${b.b_date }</th>
+			<th id="r2">${b.u_id }</th>
+			<th id="r1">${b.b_count }</th>
 		</tr>
 		</c:forEach>
-		
 	</table>
-	<button onclick="location.href='./write'">글쓰기</button>
+	<hr>
+	<div>
+		<ui:pagination paginationInfo="${paginationInfo}" type="text" jsFunction="linkPage"/>
+	</div>
+	<hr>
+	<c:if test="${sessionScope.id ne null }">
+		<button onclick="location.href='./write'" style="margin-left: 90%; margin-top: 5px;">글쓰기</button>
+	</c:if>
 	
-	
-	
-	
+	</div>
 	
 	<!-- Controller -> Service -> DAO -> DB (Model)
 	<!-- Controller : 흐름을 제어 --> 

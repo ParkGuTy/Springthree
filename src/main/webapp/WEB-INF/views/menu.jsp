@@ -30,7 +30,6 @@
 
 	<!--다섯번째 메뉴와 내용-->
 	<!--버튼 요소-->
-	<h1>FuckLOGO</h1>
 	<label for="menu1" class="label e"> <span class="rotate">
 			<p>게시판</p>
 	</span>
@@ -113,5 +112,5 @@
 
 	<!--닫기 버튼-->
 	<input type="radio" name="navigation" id="menu6" class="button close"
-		checked> <label for="menu6" class="closer"> </label>
+		checked> <label for="menu6" class="closer"> X </label>
 </div>

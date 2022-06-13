@@ -12,9 +12,22 @@ public class BoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public List<BoardDTO> boardList() {
-		return sqlSession.selectList("board.boardList"); //board.xml 네임스페이스.id 호출
+	public List<BoardDTO> boardList(PageDTO page) {
+		return sqlSession.selectList("board.boardList", page); //board.xml 네임스페이스.id 호출
 	}
+
+	public BoardDTO detail(int b_no) {
+		return sqlSession.selectOne("board.detail",b_no);
+	}
+
+	public int write(BoardDTO write) {
+		return sqlSession.insert("board.write", write);
+	}
+
+	public int totalCount() {
+		return sqlSession.selectOne("board.totalCount");
+	}
+
 	
 }
 

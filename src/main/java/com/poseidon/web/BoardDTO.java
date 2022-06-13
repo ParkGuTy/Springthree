@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 
 public class BoardDTO {
-	private int b_no, b_count, b_like, totalcount;
-	private String b_title, b_date, m_id, m_name;
+	private int b_no, b_count, totalcount;
+	private String b_title, b_content, b_date, u_id;
 
 }
